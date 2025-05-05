@@ -1,9 +1,6 @@
 <?php
 declare(strict_types=1);
 
-//require_once '../app/Router.php';
-//require_once '../app/controllers/UserController.php';
-
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
@@ -13,6 +10,7 @@ use Core\Model;
 use Core\Router;
 use App\controllers\UserController;
 use App\controllers\HomeController;
+use App\controllers\ShoppingController;
 
 
 
@@ -28,6 +26,12 @@ Model::setConnection($pdo);
 $router->add('GET', '/', [new HomeController(), 'index']);
 $router->add('GET', '/users', [new UserController(), 'index']);
 $router->add('GET', '/users/{id}', [new UserController(), 'show']);
+
+$router->add('GET', '/list', [new ShoppingController(), 'index']);
+$router->add('PATCH', '/list', [new ShoppingController(), 'update']);
+$router->add('POST', '/list', [new ShoppingController(), 'add']);
+$router->add('DELETE', '/list', [new ShoppingController(), 'delete']);
+
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
