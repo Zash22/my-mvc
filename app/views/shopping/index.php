@@ -7,28 +7,27 @@
 <body>
 <h1>Shopping List</h1>
 
+<!-- Add Item Form -->
+<form action="/list" method="POST">
+    <input type="text" name="name" placeholder="Enter new item name" required>
+    <input type="submit" value="Add">
+</form>
+
 <?php if (!empty($data['items'])): ?>
     <ul>
         <?php foreach ($data['items'] as $item): ?>
             <li>
-                <form action="/list" method="POST" style="display:inline-block; margin-right: 10px;">
+                <form action="/list" method="POST">
                     <input type="hidden" name="_method" value="PATCH">
                     <input type="hidden" name="id" value="<?= htmlspecialchars($item['id']) ?>">
-
                     <input type="text" name="name" value="<?= htmlspecialchars($item['name']) ?>">
-
-                    <label>
-                        <input type="checkbox" name="checked" value="1" <?= $item['checked'] == '1' ? 'checked' : '' ?>>
-                        Checked
-                    </label>
-
-                    <button type="submit">Update</button>
+                    <input type="checkbox" name="checked" value="1" <?= $item['checked'] ? 'checked' : '' ?>>
+                    <input type="submit" value="Update">
                 </form>
-
-                <form action="/list" method="POST" style="display:inline-block;">
+                <form action="/list" method="POST" style="display:inline;">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="id" value="<?= htmlspecialchars($item['id']) ?>">
-                    <button type="submit" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                    <input type="submit" value="Delete">
                 </form>
             </li>
         <?php endforeach; ?>

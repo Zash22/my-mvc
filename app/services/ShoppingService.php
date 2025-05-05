@@ -20,12 +20,12 @@ class ShoppingService
         return $this->repository->getAllItems();
     }
 
-    public function addItem(): array
+    public function addItem(array $data): void
     {
-        return $this->repository->addItem();
+        $this->repository->addItem($data);
     }
 
-    public function updateItem($data): void
+    public function updateItem(array $data): void
     {
         $this->repository->updateItem($data);
     }

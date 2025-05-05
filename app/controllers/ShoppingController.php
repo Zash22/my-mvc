@@ -17,7 +17,13 @@ class ShoppingController extends Controller
     }
     public function add(): void
     {
-        die('post');
+        $shoppingService = new ShoppingService();
+
+        $shoppingService->addItem($_POST);
+
+        $items = $shoppingService->showItems();
+
+        $this->view('shopping/index', ['items' => $items]);
     }
 
     public function update(): void

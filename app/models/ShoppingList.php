@@ -14,10 +14,17 @@ class ShoppingList extends Model
 
     public static function insert(array $data): void
     {
+        $sql = "INSERT INTO items (name, checked) VALUES (:name, 0)";
+        self::query($sql, [
+            'name' => $data['name'],
+//            'email' => $data['email']
+        ]);
     }
 
     public static function update(array $data): void
     {
+        $data['checked'] = isset($_POST['checked']) ? '1' : '0';
+
         $sql = "UPDATE items SET name = :name, checked = :checked WHERE id = :id";
         self::query($sql, [
             'name' => $data['name'],

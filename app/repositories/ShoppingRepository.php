@@ -19,9 +19,9 @@ class ShoppingRepository
         return $items;
     }
 
-    public function addItem(): void
+    public function addItem($data): void
     {
-        ShoppingList::insert();
+        ShoppingList::insert($data);
     }
 
     public function updateItem($data): void
