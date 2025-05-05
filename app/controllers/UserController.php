@@ -1,8 +1,10 @@
 <?php
 declare(strict_types=1);
 
-require_once '../app/services/UserService.php';
-require_once '../core/Controller.php';
+namespace App\controllers;
+
+use Core\Controller;
+use App\services\UserService;
 
 
 class UserController extends Controller

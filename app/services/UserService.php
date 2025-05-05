@@ -1,7 +1,14 @@
 <?php
 declare(strict_types=1);
 
-require_once '../app/repositories/UserRepository.php';
+//require_once '../repositories/UserRepository.php';
+
+//require_once __DIR__ . '/../repositories/UserRepository.php';
+
+namespace App\Services;
+
+use App\repositories\UserRepository;
+
 
 class UserService
 {
