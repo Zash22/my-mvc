@@ -30,8 +30,8 @@ class ShoppingService
         $this->repository->updateItem($data);
     }
 
-    public function deleteItem(): array
+    public function deleteItem($id): void
     {
-        return $this->repository->deleteItem();
+        $this->repository->deleteItem($id);
     }
 }

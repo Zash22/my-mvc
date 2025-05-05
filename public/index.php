@@ -28,8 +28,8 @@ $router->add('GET', '/users', [new UserController(), 'index']);
 $router->add('GET', '/users/{id}', [new UserController(), 'show']);
 
 $router->add('GET', '/list', [new ShoppingController(), 'index']);
-$router->add('POST', '/list', [new ShoppingController(), 'add']);
 $router->add('PATCH', '/list', [new ShoppingController(), 'update']);
+$router->add('POST', '/list', [new ShoppingController(), 'add']);
 $router->add('DELETE', '/list', [new ShoppingController(), 'delete']);
 
 

@@ -32,9 +32,21 @@ class Router
                 continue;
             }
 
+//            if (preg_match($route['regex'], $uri, $matches)) {
+//                array_shift($matches);
+//                call_user_func($route['action'], (int)$matches[0]);
+//                return;
+//            }
+
             if (preg_match($route['regex'], $uri, $matches)) {
-                array_shift($matches);
-                call_user_func($route['action'], (int)$matches[0]);
+                array_shift($matches); // Remove full match
+
+                if (!empty($matches)) {
+                    call_user_func($route['action'], (int)$matches[0]);
+                } else {
+                    call_user_func($route['action']);
+                }
+
                 return;
             }
         }

@@ -28,5 +28,9 @@ class ShoppingList extends Model
 
     public static function delete(string $id): void
     {
+        $sql = "DELETE FROM items WHERE id = :id";
+        self::query($sql, [
+            ':id' => $id,
+        ]);
     }
 }

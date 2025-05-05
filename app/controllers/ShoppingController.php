@@ -34,6 +34,15 @@ class ShoppingController extends Controller
 
     public function delete(): void
     {
+        $shoppingService = new ShoppingService();
+
+        $id = $_POST['id'];
+
+        $shoppingService->deleteItem($id);
+
+        $items = $shoppingService->showItems();
+
+        $this->view('shopping/index', ['items' => $items]);
     }
 
 }
