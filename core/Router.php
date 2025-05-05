@@ -22,6 +22,11 @@ class Router
 
     public function dispatch(string $method, string $uri): void
     {
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method === 'POST' && isset($_POST['_method'])) {
+            $method = strtoupper($_POST['_method']);
+        }
+
         foreach ($this->routes as $route) {
             if ($route['method'] !== $method) {
                 continue;

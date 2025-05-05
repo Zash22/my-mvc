@@ -24,9 +24,9 @@ class ShoppingRepository
         ShoppingList::insert();
     }
 
-    public function updateItem($id): void
+    public function updateItem($data): void
     {
-        ShoppingList::update($id);
+        ShoppingList::update($data);
 
     }
 

@@ -25,9 +25,9 @@ class ShoppingService
         return $this->repository->addItem();
     }
 
-    public function updateItem(): array
+    public function updateItem($data): void
     {
-        return $this->repository->updateItem();
+        $this->repository->updateItem($data);
     }
 
     public function deleteItem(): array

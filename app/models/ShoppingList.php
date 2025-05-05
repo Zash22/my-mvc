@@ -18,6 +18,12 @@ class ShoppingList extends Model
 
     public static function update(array $data): void
     {
+        $sql = "UPDATE items SET name = :name, checked = :checked WHERE id = :id";
+        self::query($sql, [
+            'name' => $data['name'],
+            'checked' => $data['checked'],
+            'id' => $data['id'],
+        ]);
     }
 
     public static function delete(string $id): void

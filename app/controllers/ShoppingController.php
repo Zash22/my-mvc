@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\controllers;
 
-use App\Services\UserService;
 use Core\Controller;
 use App\services\ShoppingService;
 
@@ -18,10 +17,19 @@ class ShoppingController extends Controller
     }
     public function add(): void
     {
+        die('post');
     }
 
     public function update(): void
     {
+
+        $shoppingService = new ShoppingService();
+
+        $shoppingService->updateItem($_POST);
+
+        $items = $shoppingService->showItems();
+
+        $this->view('shopping/index', ['items' => $items]);
     }
 
     public function delete(): void
